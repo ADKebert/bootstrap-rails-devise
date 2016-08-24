@@ -1,48 +1,41 @@
 class WheatsController < ApplicationController
   before_action :set_wheat, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /wheats
   def index
-    @wheats = Wheat.all
+    @wheats = current_user.wheats
   end
 
   # GET /wheats/1
   def show
   end
 
-  # GET /wheats/new
-  def new
-    @wheat = Wheat.new
-  end
-
-  # GET /wheats/1/edit
-  def edit
-  end
-
   # POST /wheats
   def create
     @wheat = Wheat.new(wheat_params)
+    @wheat.user = current_user
 
     if @wheat.save
-      redirect_to @wheat, notice: 'Wheat was successfully created.'
+      redirect_to wheats_path, notice: "It's sprouting nicely."
     else
-      render :new
+      redirect_to wheats_path, notice: "It wouldn't sprout"
     end
   end
 
   # PATCH/PUT /wheats/1
   def update
     if @wheat.update(wheat_params)
-      redirect_to @wheat, notice: 'Wheat was successfully updated.'
+      redirect_to wheats_path, notice: "The crop has been rearranged"
     else
-      render :edit
+      redirect_to wheats_path, notice: "Somehting didn't take"
     end
   end
 
   # DELETE /wheats/1
   def destroy
     @wheat.destroy
-    redirect_to wheats_url, notice: 'Wheat was successfully destroyed.'
+    redirect_to wheats_path, notice: 'Wheat was successfully harvested.'
   end
 
   private
