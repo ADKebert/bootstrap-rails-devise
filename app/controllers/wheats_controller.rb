@@ -23,15 +23,6 @@ class WheatsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /wheats/1
-  def update
-    if @wheat.update(wheat_params)
-      redirect_to wheats_path, notice: "The crop has been rearranged"
-    else
-      redirect_to wheats_path, notice: "Somehting didn't take"
-    end
-  end
-
   # DELETE /wheats/1
   def destroy
     @wheat.destroy
