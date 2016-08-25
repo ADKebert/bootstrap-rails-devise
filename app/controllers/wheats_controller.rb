@@ -7,10 +7,6 @@ class WheatsController < ApplicationController
     @wheats = current_user.wheats
   end
 
-  # GET /wheats/1
-  def show
-  end
-
   # POST /wheats
   def create
     @wheat = Wheat.new(wheat_params)

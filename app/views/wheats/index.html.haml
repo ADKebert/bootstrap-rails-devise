@@ -9,7 +9,7 @@
         - (1..10).each do |y|
           %td
             - @wheat = Wheat.find_by(x: x, y: y)
-            -if current_user.wheats.include?(@wheat)
+            -if @wheats.include?(@wheat)
               = link_to  @wheat, :method => :delete do
                 %span.glyphicon.glyphicon-grain
             -else
