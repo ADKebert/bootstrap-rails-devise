@@ -19,20 +19,18 @@
     %nav.navbar.navbar-inverse.navbar-fixed-top{role: "navigation"}
       .container
         .navbar-header
-          %button.navbar-toggle.collapsed{type: "button", data: {toggle: "collapse", target: "#navbar"}, aria: {expanded: "false", controls: "navbar"} }
-            %span.sr-only Toggle navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          = link_to "/", class: "navbar-brand" do
-            %span.glyphicon.glyphicon-grain
-            Great Wheat
-            %span.glyphicon.glyphicon-grain
-        #navbar.collapse.navbar-collapse
-          %ul.nav.navbar-nav
+          %ul.nav.nav-pills.nav-justified
             %li
-              = link_to 'Logout', destroy_user_session_path, :method => :delete
-              
+              = link_to "/", class: "navbar-brand" do
+                %span.glyphicon.glyphicon-grain
+                Great Wheat
+                %span.glyphicon.glyphicon-grain
+            - if user_signed_in?
+              %li
+                = link_to  destroy_user_session_path, :method => :delete, class: "navbar-brand" do
+                  Logout
+
+
     .container
       - flash.each do |name, msg|
         = content_tag :div, class: "alert alert-#{name == :error ? "danger" : "success" } alert-dismissable", role: "alert" do

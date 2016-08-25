@@ -29,7 +29,7 @@ $brand-danger:          #d9534f !default;
 //** Background color for `<body>`.
 $body-bg:               #916001 !default;
 //** Global text color on `<body>`.
-$text-color:            #fff !default;
+$text-color:            #CDC5B4 !default;
 
 //** Global textual link color.
 $link-color:            $brand-primary !default;
@@ -390,8 +390,8 @@ $navbar-default-toggle-border-color:       #ddd !default;
 
 // Inverted navbar
 // Reset inverted navbar basics
-$navbar-inverse-color:                      lighten($gray-light, 15%) !default;
-$navbar-inverse-bg:                         #222 !default;
+$navbar-inverse-color:                      #CDC5B4 !default;
+$navbar-inverse-bg:                         #551b14 !default;
 $navbar-inverse-border:                     darken($navbar-inverse-bg, 10%) !default;
 
 // Inverted navbar links
