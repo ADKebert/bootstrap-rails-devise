@@ -6,21 +6,9 @@
 
 .table-responsive
   %table.table.table-striped.table-bordered.table-hover
-    %thead
-      %tr
-        %th User
-        %th X
-        %th Y
-        %th
-        %th
-        %th
-
     %tbody
-      - @wheats.each do |wheat|
+      - (1..10).each do |x|
         %tr
-          %td= wheat.user
-          %td= wheat.x
-          %td= wheat.y
-          %td= link_to 'Show', wheat
-          %td= link_to 'Edit', edit_wheat_path(wheat)
-          %td= link_to 'Destroy', wheat, data: { confirm: 'Are you sure?' }, method: :delete
+        - (1..10).each do |y|
+          %td
+            ="X: #{x}, Y: #{y}"
