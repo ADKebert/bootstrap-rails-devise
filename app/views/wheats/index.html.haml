@@ -1,8 +1,5 @@
 .page-header
-  = link_to new_wheat_path, class: 'btn btn-primary' do
-    %span.glyphicon.glyphicon-plus
-    New Wheat
-  %h1 Listing wheats
+  %h1 Your wheats are growing!
 
 .table-responsive
   %table.table.table-striped.table-bordered.table-hover
@@ -11,4 +8,12 @@
         %tr
         - (1..10).each do |y|
           %td
-            ="X: #{x}, Y: #{y}"
+            - @wheat = Wheat.find_by(x: x, y: y)
+            -if current_user.wheats.include?(@wheat)
+              = link_to  @wheat, :method => :delete do
+                %span.glyphicon.glyphicon-grain
+            -else
+              = form_for :wheat, url: { action: "create" } do |f|
+                = f.hidden_field :x, value: x
+                = f.hidden_field :y, value: y
+                = f.submit '', class: 'glyphicon'
