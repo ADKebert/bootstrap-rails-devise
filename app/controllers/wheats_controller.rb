@@ -9,8 +9,8 @@ class WheatsController < ApplicationController
 
   # POST /wheats
   def create
-    @wheat = Wheat.new(wheat_params)
-    @wheat.user = current_user
+    @wheat = Wheat.find_or_create_by(wheat_params)
+    @wheat.users << current_user
 
     if @wheat.save
       redirect_to wheats_path, notice: "It's sprouting nicely."
@@ -21,7 +21,7 @@ class WheatsController < ApplicationController
 
   # DELETE /wheats/1
   def destroy
-    @wheat.destroy
+    current_user.wheats.delete(@wheat)
     redirect_to wheats_path, notice: 'Wheat was successfully harvested.'
   end
 
